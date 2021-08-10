@@ -16,7 +16,6 @@ export default function withCacheEffectivePage(handler: Handler) {
 
     res.setHeader('Cache-Control', `s-maxage=${options.secondsBeforeRevalidation}, stale-while-revalidate`)
     res.setHeader('Content-Disposition', 'inline')
-    res.setHeader('Content-Type', 'text/xml')
 
     if (includesAllowedQueryParam) {
       const urlWithAllowedQueryParams = makeUrlWithAllowedQueryParams(req.url, allowedQueryParams)
