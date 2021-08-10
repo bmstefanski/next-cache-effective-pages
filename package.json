@@ -1,0 +1,27 @@
+{
+  "name": "next-cache-effective-pages",
+  "version": "1.0.0",
+  "description": "A helper for creating cache-effective Next.js server-side-rendered pages with minimal effort",
+  "main": "index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bmstefanski/next-cache-effective-pages.git"
+  },
+  "keywords": [
+    "nextjs",
+    "nextjs-plugin"
+  ],
+  "author": "bmstefanski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bmstefanski/next-cache-effective-pages/issues"
+  },
+  "homepage": "https://github.com/bmstefanski/next-cache-effective-pages#readme",
+  "dependencies": {
+    "next": "^11.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^16.4.13",
+    "prettier": "^2.3.2"
+  }
+}
