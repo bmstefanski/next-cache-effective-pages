@@ -1,10 +1,12 @@
 {
   "name": "next-cache-effective-pages",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A helper for creating cache-effective Next.js server-side-rendered pages with minimal effort",
   "main": "index.ts",
   "scripts": {
-    "dev": "cd preview && npm run dev"
+    "dev": "cd preview && npm run dev",
+    "prebuild": "rimraf lib",
+    "build": "tsc -p tsconfig.json"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,9 @@
   },
   "devDependencies": {
     "@types/node": "^16.4.13",
-    "prettier": "^2.3.2"
+    "@types/react": "^17.0.16",
+    "@types/react-dom": "^17.0.9",
+    "prettier": "^2.3.2",
+    "typescript": "^4.3.5"
   }
 }

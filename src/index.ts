@@ -18,13 +18,13 @@ export default function withCacheEffectivePage(handler: Handler) {
     res.setHeader('Content-Disposition', 'inline')
 
     if (includesAllowedQueryParam) {
-      const urlWithAllowedQueryParams = makeUrlWithAllowedQueryParams(req.url, allowedQueryParams)
+      const urlWithAllowedQueryParams = makeUrlWithAllowedQueryParams(req.url as string, allowedQueryParams)
       const hasUrlChanged = urlWithAllowedQueryParams !== req.url
       if (hasUrlChanged) {
         return redirect(urlWithAllowedQueryParams)
       }
     } else if (hasForbiddenQueryParams) {
-      return redirect(makeQuerylessUrl(req.url))
+      return redirect(makeQuerylessUrl(req.url as string))
     }
 
     return handler({ req, res, query: queryParams }).then(() => ({ props: {} }))
