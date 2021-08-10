@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A helper for creating cache-effective Next.js server-side-rendered pages with minimal effort",
   "main": "index.ts",
+  "scripts": {
+    "dev": "cd preview && npm run dev"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bmstefanski/next-cache-effective-pages.git"
