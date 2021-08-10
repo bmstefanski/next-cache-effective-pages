@@ -6,16 +6,13 @@ type Handler = (ctxt: { req: NextApiRequest; res: NextApiResponse; query: Record
 type Args = { res: NextApiResponse; req: NextApiRequest; options?: { secondsBeforeRevalidation?: number; allowedQueryParams?: string[] } }
 type QueryParams = Record<string, string>
 
-export default function withCacheEffectivePage(handler: Handler) {
+export function withCacheEffectivePage(handler: Handler) {
   return ({ req, res, options = { secondsBeforeRevalidation: 60 * 30 } }: Args) => {
     const queryParams = parseQuery(url.parse(req.url).query)
     const allowedQueryParams = pick({ ...queryParams }, options.allowedQueryParams || [])
 
     const hasForbiddenQueryParams = Object.values(queryParams).length > 0
     const includesAllowedQueryParam = Object.values(allowedQueryParams).length > 0
-
-    res.setHeader('Cache-Control', `s-maxage=${options.secondsBeforeRevalidation}, stale-while-revalidate`)
-    res.setHeader('Content-Disposition', 'inline')
 
     if (includesAllowedQueryParam) {
       const urlWithAllowedQueryParams = makeUrlWithAllowedQueryParams(req.url as string, allowedQueryParams)
@@ -26,6 +23,9 @@ export default function withCacheEffectivePage(handler: Handler) {
     } else if (hasForbiddenQueryParams) {
       return redirect(makeQuerylessUrl(req.url as string))
     }
+
+    res.setHeader('Cache-Control', `s-maxage=${options.secondsBeforeRevalidation}, stale-while-revalidate`)
+    res.setHeader('Content-Disposition', 'inline')
 
     return handler({ req, res, query: queryParams }).then(() => ({ props: {} }))
   }
