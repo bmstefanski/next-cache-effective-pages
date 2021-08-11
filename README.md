@@ -40,7 +40,7 @@ $ yarn add next-cache-effective-pages
 ### Sitemap
 
 ```typescript
-// pages/sitemap.xml
+// pages/sitemap.xml.js
 
 export default function Sitemap() {}
 
@@ -56,7 +56,7 @@ export async function getServerSideProps(ctxt) {
 ### Sitemap with pagination
 
 ```typescript
-// pages/sitemap.xml
+// pages/sitemap.xml.js
 
 export default function Sitemap() {}
 
