@@ -35,7 +35,7 @@ $ npm i --save next-cache-effective-pages
 $ yarn add next-cache-effective-pages
 ```
 
-## Example use
+## Example use cases
 
 ### Sitemap
 
